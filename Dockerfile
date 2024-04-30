@@ -1,5 +1,10 @@
 FROM node:18 AS build
 
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
+
+USER nonroot
+
 WORKDIR /opt/node_app
 
 COPY package.json yarn.lock ./
