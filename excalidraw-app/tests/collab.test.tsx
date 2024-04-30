@@ -18,14 +18,14 @@ const { h } = window;
 
 Object.defineProperty(window, "crypto", {
   value: {
-    getRandomValues: (arr: number[]) =>
-      arr.forEach((v, i) => (arr[i] = Math.floor(Math.random() * 256))),
+    getRandomValues: (arr) => window.crypto.getRandomValues(new Uint8Array(arr)),
     subtle: {
       generateKey: () => {},
       exportKey: () => ({ k: "sTdLvMC_M3V8_vGa3UVRDg" }),
     },
   },
 });
+
 
 vi.mock("../../excalidraw-app/data/firebase.ts", () => {
   const loadFromFirebase = async () => null;

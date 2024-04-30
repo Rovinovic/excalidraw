@@ -82,7 +82,9 @@ describe("point and polylines", () => {
     ] as Point[];
 
     truePoints.forEach((point) => {
-      const rotation = Math.random() * 360;
+      const randomBuffer = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer);
+      const rotation = (randomBuffer[0] % 360);
       const rotatedPoint = pointRotate(point, rotation);
       const rotatedPolyline: Polyline = polyline.map((line) =>
         lineRotate(line, rotation, [0, 0]),
@@ -96,7 +98,9 @@ describe("point and polylines", () => {
     ] as Point[];
 
     falsePoints.forEach((point) => {
-      const rotation = Math.random() * 360;
+      const randomBuffer = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer);
+      const rotation = (randomBuffer[0] % 360);
       const rotatedPoint = pointRotate(point, rotation);
       const rotatedPolyline: Polyline = polyline.map((line) =>
         lineRotate(line, rotation, [0, 0]),

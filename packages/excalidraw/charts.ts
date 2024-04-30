@@ -359,7 +359,10 @@ const chartTypeBar = (
 ): ChartElements => {
   const max = Math.max(...spreadsheet.values);
   const groupId = randomId();
-  const backgroundColor = bgColors[Math.floor(Math.random() * bgColors.length)];
+  const randomIndex = new Uint32Array(1);
+  window.crypto.getRandomValues(randomIndex);
+  const backgroundColor = bgColors[randomIndex[0] % bgColors.length];
+  
 
   const bars = spreadsheet.values.map((value, index) => {
     const barHeight = (value / max) * BAR_HEIGHT;
@@ -395,7 +398,11 @@ const chartTypeLine = (
 ): ChartElements => {
   const max = Math.max(...spreadsheet.values);
   const groupId = randomId();
-  const backgroundColor = bgColors[Math.floor(Math.random() * bgColors.length)];
+  const randomBuffer = new Uint32Array(1);
+  window.crypto.getRandomValues(randomBuffer);
+  const randomIndex = randomBuffer[0] % bgColors.length;
+  const backgroundColor = bgColors[randomIndex];
+  
 
   let index = 0;
   const points = [];
