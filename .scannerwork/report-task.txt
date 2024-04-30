@@ -1,0 +1,6 @@
+projectKey=SS2
+serverUrl=http://localhost:9000
+serverVersion=10.5.0.89998
+dashboardUrl=http://localhost:9000/dashboard?id=SS2
+ceTaskId=806ca117-e7b8-4a60-8ab2-83d77c0fe536
+ceTaskUrl=http://localhost:9000/api/ce/task?id=806ca117-e7b8-4a60-8ab2-83d77c0fe536
