@@ -110,15 +110,15 @@ export class SnapCache {
     horizontalGaps: Gap[];
   } | null = null;
 
-  public static setReferenceSnapPoints = (snapPoints: Point[] | null) => {
+  public static readonly setReferenceSnapPoints = (snapPoints: Point[] | null) => {
     SnapCache.referenceSnapPoints = snapPoints;
   };
 
-  public static getReferenceSnapPoints = () => {
+  public static readonly getReferenceSnapPoints = () => {
     return SnapCache.referenceSnapPoints;
   };
 
-  public static setVisibleGaps = (
+  public static readonly setVisibleGaps = (
     gaps: {
       verticalGaps: Gap[];
       horizontalGaps: Gap[];
@@ -127,11 +127,11 @@ export class SnapCache {
     SnapCache.visibleGaps = gaps;
   };
 
-  public static getVisibleGaps = () => {
+  public static readonly getVisibleGaps = () => {
     return SnapCache.visibleGaps;
   };
 
-  public static destroy = () => {
+  public static readonly destroy = () => {
     SnapCache.referenceSnapPoints = null;
     SnapCache.visibleGaps = null;
   };

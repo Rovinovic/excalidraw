@@ -26,7 +26,7 @@ export class EditorLocalStorage {
     }
   }
 
-  static set = (
+  static readonlyset = (
     key: typeof EDITOR_LS_KEYS[keyof typeof EDITOR_LS_KEYS],
     value: JSONValue,
   ) => {
@@ -39,7 +39,7 @@ export class EditorLocalStorage {
     }
   };
 
-  static delete = (
+  static readonly delete = (
     name: typeof EDITOR_LS_KEYS[keyof typeof EDITOR_LS_KEYS],
   ) => {
     try {

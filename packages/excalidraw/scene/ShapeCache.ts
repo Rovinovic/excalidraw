@@ -18,7 +18,7 @@ export class ShapeCache {
    * Retrieves shape from cache if available. Use this only if shape
    * is optional and you have a fallback in case it's not cached.
    */
-  public static get = <T extends ExcalidrawElement>(element: T) => {
+  public static readonly get = <T extends ExcalidrawElement>(element: T) => {
     return ShapeCache.cache.get(
       element,
     ) as T["type"] extends keyof ElementShapes
@@ -26,17 +26,17 @@ export class ShapeCache {
       : ElementShape | undefined;
   };
 
-  public static set = <T extends ExcalidrawElement>(
+  public static readonly set = <T extends ExcalidrawElement>(
     element: T,
     shape: T["type"] extends keyof ElementShapes
       ? ElementShapes[T["type"]]
       : Drawable,
   ) => ShapeCache.cache.set(element, shape);
 
-  public static delete = (element: ExcalidrawElement) =>
+  public static readonly delete = (element: ExcalidrawElement) =>
     ShapeCache.cache.delete(element);
 
-  public static destroy = () => {
+  public static readonly destroy = () => {
     ShapeCache.cache = new WeakMap();
   };
 
@@ -44,7 +44,7 @@ export class ShapeCache {
    * Generates & caches shape for element if not already cached, otherwise
    * returns cached shape.
    */
-  public static generateElementShape = <
+  public static readonly generateElementShape = <
     T extends Exclude<ExcalidrawElement, ExcalidrawSelectionElement>,
   >(
     element: T,

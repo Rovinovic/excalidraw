@@ -94,7 +94,7 @@ export class GlobalTestState {
   /**
    * automatically updated on each call to render()
    */
-  static renderResult: RenderResult<typeof customQueries> = null!;
+  static readonly renderResult: RenderResult<typeof customQueries> = null!;
   /**
    * retrieves static canvas for currently rendered app instance
    */

@@ -103,7 +103,7 @@ export class LocalData {
   );
 
   /** Saves DataState, including files. Bails if saving is paused */
-  static save = (
+  static readonly save = (
     elements: readonly ExcalidrawElement[],
     appState: AppState,
     files: BinaryFiles,
@@ -115,27 +115,27 @@ export class LocalData {
     }
   };
 
-  static flushSave = () => {
+  static readonly flushSave = () => {
     this._save.flush();
   };
 
   private static locker = new Locker<SavingLockTypes>();
 
-  static pauseSave = (lockType: SavingLockTypes) => {
+  static readonly pauseSave = (lockType: SavingLockTypes) => {
     this.locker.lock(lockType);
   };
 
-  static resumeSave = (lockType: SavingLockTypes) => {
+  static readonly resumeSave = (lockType: SavingLockTypes) => {
     this.locker.unlock(lockType);
   };
 
-  static isSavePaused = () => {
+  static readonly isSavePaused = () => {
     return document.hidden || this.locker.isLocked();
   };
 
   // ---------------------------------------------------------------------------
 
-  static fileStorage = new LocalFileManager({
+  static readonly fileStorage = new LocalFileManager({
     getFiles(ids) {
       return getMany(ids, filesStore).then(
         async (filesData: (BinaryFileData | undefined)[]) => {

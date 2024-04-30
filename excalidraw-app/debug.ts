@@ -13,7 +13,7 @@ const getAvgFrameTime = (times: number[]) =>
 const getFps = (frametime: number) => lessPrecise(1000 / frametime);
 
 export class Debug {
-  public static DEBUG_LOG_TIMES = true;
+  public static readonly DEBUG_LOG_TIMES = true;
 
   private static TIMES_AGGR: Record<string, { t: number; times: number[] }> =
     {};
@@ -78,7 +78,7 @@ export class Debug {
     }
   };
 
-  public static logTime = (time?: number, name = "default") => {
+  public static readonly logTime = (time?: number, name = "default") => {
     Debug.setupInterval();
     const now = performance.now();
     const { t, times } = (Debug.TIMES_AGGR[name] = Debug.TIMES_AGGR[name] || {
@@ -90,7 +90,7 @@ export class Debug {
     }
     Debug.TIMES_AGGR[name].t = now;
   };
-  public static logTimeAverage = (time?: number, name = "default") => {
+  public static readonly logTimeAverage = (time?: number, name = "default") => {
     Debug.setupInterval();
     const now = performance.now();
     const { t, times } = (Debug.TIMES_AVG[name] = Debug.TIMES_AVG[name] || {
@@ -114,10 +114,10 @@ export class Debug {
       };
     };
 
-  public static logTimeWrap = Debug.logWrapper("logTime");
-  public static logTimeAverageWrap = Debug.logWrapper("logTimeAverage");
+  public static readonly logTimeWrap = Debug.logWrapper("logTime");
+  public static readonly logTimeAverageWrap = Debug.logWrapper("logTimeAverage");
 
-  public static perfWrap = <T extends any[], R>(
+  public static readonly perfWrap = <T extends any[], R>(
     fn: (...args: T) => R,
     name = "default",
   ) => {

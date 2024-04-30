@@ -1477,7 +1477,7 @@ export class BoundElement {
    *
    * NOTE: rebind expects that affected elements were previously unbound with `BoundElement.unbindAffected`
    */
-  public static rebindAffected = (
+  public static readonly rebindAffected = (
     elements: ElementsMap,
     boundElement: ExcalidrawElement | undefined,
     updateElementWith: (
@@ -1589,7 +1589,7 @@ export class BindableElement {
    *
    * NOTE: rebind expects that affected elements were previously unbound with `BindaleElement.unbindAffected`
    */
-  public static rebindAffected = (
+  public static readonly rebindAffected = (
     elements: ElementsMap,
     bindableElement: ExcalidrawElement | undefined,
     updateElementWith: (

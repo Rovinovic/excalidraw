@@ -483,7 +483,7 @@ export const parseLibraryTokensFromUrl = () => {
 };
 
 class AdapterTransaction {
-  static queue = new Queue();
+  static readonly queue = new Queue();
 
   static async getLibraryItems(
     adapter: LibraryPersistenceAdapter,
@@ -507,7 +507,7 @@ class AdapterTransaction {
     return task();
   }
 
-  static run = async <T>(
+  static readonly run = async <T>(
     adapter: LibraryPersistenceAdapter,
     fn: (transaction: AdapterTransaction) => Promise<T>,
   ) => {

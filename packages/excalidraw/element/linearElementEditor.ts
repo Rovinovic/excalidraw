@@ -118,7 +118,7 @@ export class LinearElementEditor {
   // static methods
   // ---------------------------------------------------------------------------
 
-  static POINT_HANDLE_SIZE = 10;
+  static readonly POINT_HANDLE_SIZE = 10;
   /**
    * @param id the `elementId` from the instance of this class (so that we can
    *  statically guarantee this method returns an ExcalidrawLinearElement)
@@ -419,7 +419,7 @@ export class LinearElementEditor {
     };
   }
 
-  static getEditorMidPoints = (
+  static readonly getEditorMidPoints = (
     element: NonDeleted<ExcalidrawLinearElement>,
     elementsMap: ElementsMap,
     appState: InteractiveCanvasAppState,
@@ -448,7 +448,7 @@ export class LinearElementEditor {
     return editorMidPointsCache.points!;
   };
 
-  static updateEditorMidPointsCache = (
+  static readonly updateEditorMidPointsCache = (
     element: NonDeleted<ExcalidrawLinearElement>,
     elementsMap: ElementsMap,
     appState: InteractiveCanvasAppState,
@@ -488,7 +488,7 @@ export class LinearElementEditor {
     editorMidPointsCache.zoom = appState.zoom.value;
   };
 
-  static getSegmentMidpointHitCoords = (
+  static readonly getSegmentMidpointHitCoords = (
     linearElementEditor: LinearElementEditor,
     scenePointer: { x: number; y: number },
     appState: AppState,
@@ -1337,7 +1337,7 @@ export class LinearElementEditor {
     return rotatePoint([width, height], [0, 0], -element.angle);
   }
 
-  static getBoundTextElementPosition = (
+  static readonly getBoundTextElementPosition = (
     element: ExcalidrawLinearElement,
     boundTextElement: ExcalidrawTextElementWithContainer,
     elementsMap: ElementsMap,
@@ -1385,7 +1385,7 @@ export class LinearElementEditor {
     return { x, y };
   };
 
-  static getMinMaxXYWithBoundText = (
+  static readonly getMinMaxXYWithBoundText = (
     element: ExcalidrawLinearElement,
     elementsMap: ElementsMap,
     elementBounds: Bounds,
@@ -1488,7 +1488,7 @@ export class LinearElementEditor {
     return [x1, y1, x2, y2, cx, cy];
   };
 
-  static getElementAbsoluteCoords = (
+  static readonly getElementAbsoluteCoords = (
     element: ExcalidrawLinearElement,
     elementsMap: ElementsMap,
     includeBoundText: boolean = false,

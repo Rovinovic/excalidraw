@@ -50,7 +50,7 @@ export type KeyboardModifiers = {
   ctrl?: boolean;
 };
 export class Keyboard {
-  static withModifierKeys = (modifiers: KeyboardModifiers, cb: () => void) => {
+  static readonly withModifierKeys = (modifiers: KeyboardModifiers, cb: () => void) => {
     const prevAltKey = altKey;
     const prevShiftKey = shiftKey;
     const prevCtrlKey = ctrlKey;
@@ -68,7 +68,7 @@ export class Keyboard {
     }
   };
 
-  static keyDown = (key: string) => {
+  static readonly keyDown = (key: string) => {
     fireEvent.keyDown(document, {
       key,
       ctrlKey,
@@ -77,7 +77,7 @@ export class Keyboard {
     });
   };
 
-  static keyUp = (key: string) => {
+  static readonly keyUp = (key: string) => {
     fireEvent.keyUp(document, {
       key,
       ctrlKey,
@@ -86,12 +86,12 @@ export class Keyboard {
     });
   };
 
-  static keyPress = (key: string) => {
+  static readonly keyPress = (key: string) => {
     Keyboard.keyDown(key);
     Keyboard.keyUp(key);
   };
 
-  static codeDown = (code: string) => {
+  static readonly codeDown = (code: string) => {
     fireEvent.keyDown(document, {
       code,
       ctrlKey,
@@ -100,7 +100,7 @@ export class Keyboard {
     });
   };
 
-  static codeUp = (code: string) => {
+  static readonly codeUp = (code: string) => {
     fireEvent.keyUp(document, {
       code,
       ctrlKey,
@@ -109,18 +109,18 @@ export class Keyboard {
     });
   };
 
-  static codePress = (code: string) => {
+  static readonly codePress = (code: string) => {
     Keyboard.codeDown(code);
     Keyboard.codeUp(code);
   };
 
-  static undo = () => {
+  static readonly undo = () => {
     Keyboard.withModifierKeys({ ctrl: true }, () => {
       Keyboard.keyPress("z");
     });
   };
 
-  static redo = () => {
+  static readonly redo = () => {
     Keyboard.withModifierKeys({ ctrl: true, shift: true }, () => {
       Keyboard.keyPress("z");
     });
@@ -390,11 +390,11 @@ type Element<T extends DrawingToolName> = T extends "line" | "freedraw"
   : ExcalidrawElement;
 
 export class UI {
-  static clickTool = (toolName: ToolType | "lock") => {
+  static readonly clickTool = (toolName: ToolType | "lock") => {
     fireEvent.click(GlobalTestState.renderResult.getByToolName(toolName));
   };
 
-  static clickLabeledElement = (label: string) => {
+  static readonly clickLabeledElement = (label: string) => {
     const element = document.querySelector(`[aria-label='${label}']`);
     if (!element) {
       throw new Error(`No labeled element found: ${label}`);
@@ -402,7 +402,7 @@ export class UI {
     fireEvent.click(element);
   };
 
-  static clickOnTestId = (testId: string) => {
+  static readonly clickOnTestId = (testId: string) => {
     const element = document.querySelector(`[data-testid='${testId}']`);
     // const element = GlobalTestState.renderResult.queryByTestId(testId);
     if (!element) {
@@ -411,7 +411,7 @@ export class UI {
     fireEvent.click(element);
   };
 
-  static clickByTitle = (title: string) => {
+  static readonly clickByTitle = (title: string) => {
     fireEvent.click(screen.getByTitle(title));
   };
 
@@ -553,7 +553,7 @@ export class UI {
     });
   }
 
-  static queryContextMenu = () => {
+  static readonly queryContextMenu = () => {
     return GlobalTestState.renderResult.container.querySelector(
       ".context-menu",
     ) as HTMLElement | null;

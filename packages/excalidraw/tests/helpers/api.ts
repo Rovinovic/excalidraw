@@ -40,7 +40,7 @@ createTestHook();
 const { h } = window;
 
 export class API {
-  static setSelectedElements = (elements: ExcalidrawElement[]) => {
+  static readonly setSelectedElements = (elements: ExcalidrawElement[]) => {
     h.setState({
       selectedElementIds: elements.reduce((acc, element) => {
         acc[element.id] = true;
@@ -49,7 +49,7 @@ export class API {
     });
   };
 
-  static getSelectedElements = (
+  static readonly getSelectedElements = (
     includeBoundTextElement: boolean = false,
     includeElementsInFrames: boolean = false,
   ): ExcalidrawElement[] => {
@@ -59,7 +59,7 @@ export class API {
     });
   };
 
-  static getSelectedElement = (): ExcalidrawElement => {
+  static readonly getSelectedElement = (): ExcalidrawElement => {
     const selectedElements = API.getSelectedElements();
     if (selectedElements.length !== 1) {
       throw new Error(
@@ -69,27 +69,27 @@ export class API {
     return selectedElements[0];
   };
 
-  static getUndoStack = () => {
+  static readonly getUndoStack = () => {
     // @ts-ignore
     return h.history.undoStack;
   };
 
-  static getRedoStack = () => {
+  static readonly getRedoStack = () => {
     // @ts-ignore
     return h.history.redoStack;
   };
 
-  static getSnapshot = () => {
+  static readonly getSnapshot = () => {
     return Array.from(h.store.snapshot.elements.values());
   };
 
-  static clearSelection = () => {
+  static readonly clearSelection = () => {
     // @ts-ignore
     h.app.clearSelection(null);
     expect(API.getSelectedElements().length).toBe(0);
   };
 
-  static createElement = <
+  static readonly createElement = <
     T extends Exclude<ExcalidrawElementType, "selection"> = "rectangle",
   >({
     // @ts-ignore
@@ -304,7 +304,7 @@ export class API {
     return element as any;
   };
 
-  static readFile = async <T extends "utf8" | null>(
+  static readonly readFile = async <T extends "utf8" | null>(
     filepath: string,
     encoding?: T,
   ): Promise<T extends "utf8" ? string : Buffer> => {
@@ -314,14 +314,14 @@ export class API {
     return readFile(filepath, { encoding }) as any;
   };
 
-  static loadFile = async (filepath: string) => {
+  static readonly loadFile = async (filepath: string) => {
     const { base, ext } = path.parse(filepath);
     return new File([await API.readFile(filepath, null)], base, {
       type: getMimeType(ext),
     });
   };
 
-  static drop = async (blob: Blob) => {
+  static readonly drop = async (blob: Blob) => {
     const fileDropEvent = createEvent.drop(GlobalTestState.interactiveCanvas);
     const text = await new Promise<string>((resolve, reject) => {
       try {
