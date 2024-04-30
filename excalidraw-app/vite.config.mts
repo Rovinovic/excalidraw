@@ -67,7 +67,7 @@ export default defineConfig({
         globIgnores: ["fonts.css", "**/locales/**", "service-worker.js"],
         runtimeCaching: [
           {
-            urlPattern: new RegExp("/.+.(ttf|woff2|otf)"),
+            urlPattern: new RegExp("/.+\\.(ttf|woff2|otf)$"),
             handler: "CacheFirst",
             options: {
               cacheName: "fonts",

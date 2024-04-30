@@ -110,7 +110,7 @@ export const normalizeSVG = async (SVGString: string) => {
       let width = svg.getAttribute("width") || "50";
       let height = svg.getAttribute("height") || "50";
       if (viewBox) {
-        const match = viewBox.match(/\d+ +\d+ +(\d+) +(\d+)/);
+        const match = viewBox.match(/^\s*(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*$/);
         if (match) {
           [, width, height] = match;
         }

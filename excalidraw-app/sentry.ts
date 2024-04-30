@@ -31,7 +31,7 @@ Sentry.init({
   ],
   beforeSend(event) {
     if (event.request?.url) {
-      event.request.url = event.request.url.replace(/#.*$/, "");
+      event.request.url = event.request.url.replace(/#[^#]*$/, "");
     }
     return event;
   },

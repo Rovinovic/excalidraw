@@ -75,9 +75,8 @@ export const toString = (nvector: NVector): string => {
   const result = nvector
     .map((value, index) =>
       Math.abs(value) > STRING_EPSILON
-        ? value.toFixed(7).replace(/(\.|0+)$/, "") +
-          (index > 0 ? NVECTOR_BASE[index] : "")
-        : null,
+    ? value.toFixed(7).replace(/(\.|0+)$/g, "") + (index > 0 ? NVECTOR_BASE[index] : "")
+    : null
     )
     .filter((representation) => representation != null)
     .join(" + ");

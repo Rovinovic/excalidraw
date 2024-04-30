@@ -941,7 +941,7 @@ function med(A: number[], B: number[]) {
 // Trim SVG path data so number are each two decimal points. This
 // improves SVG exports, and prevents rendering errors on points
 // with long decimals.
-const TO_FIXED_PRECISION = /(\s?[A-Z]?,?-?[0-9]*\.[0-9]{0,2})(([0-9]|e|-)*)/g;
+const TO_FIXED_PRECISION = /(\s?[A-Z]?,?-?\d*\.\d{0,2})([\de-]*)/g;
 
 function getSvgPathFromStroke(points: number[][]): string {
   if (!points.length) {
