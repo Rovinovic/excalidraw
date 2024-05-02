@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .icon-container {
+            margin-bottom: 20px;
+        }
+        .login-button {
+            background-color: #66a6ff;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #5591d2;
+        }
+        .instruction {
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .padlock {
+            fill: #66a6ff;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <svg class="padlock" viewBox="0 0 24 24">
+            <path d="M12 2C9.79 2 8 3.79 8 6v4H5v12h14V10h-3V6c0-2.21-1.79-4-4-4zm0 2c1.1 0 2 .9 2 2v4H10V6c0-1.1.9-2 2-2zm-5 8h10v8H7v-8z"/>
+        </svg>
+        <p class="instruction">Please Click The Button Below To Authenticate Via OAuth For Excalidraw</p>
+        <button class="login-button" onclick="handleLogin()">Login with OAuth</button>
+    </div>
+    <script>
+        function handleLogin() {
+            window.location.href = 'https://example.com/auth/oauth'; // Update this to your actual OAuth URL
+        }
+    </script>
+</body>
+</html>
